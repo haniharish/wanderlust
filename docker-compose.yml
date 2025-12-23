@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  wanderlust:
+    build: .
+    container_name: wanderlust-app
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - wanderlust-network
+
+networks:
+  wanderlust-network:
+    driver: bridge
